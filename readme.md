@@ -6,4 +6,4 @@
 > All the below features have to be implemented in the form of a REST API, this API should only return JSON not HTML!
 
 > ## How does the interface look?
-> ![](special/img.png)
+> ![](img.png)
