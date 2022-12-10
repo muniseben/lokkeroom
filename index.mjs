@@ -38,7 +38,7 @@ app.get('/lobby', (req, res) => {
     res.render('lobby')
 });
 
-//!post
+//!why this is not working?
 app.post('/register', (req, res) => {
 
 let { email, username, password } = req.body
@@ -56,7 +56,6 @@ try {
     const encryptedPassword = bcrypt.hash(password, 10)
     client.query(
         'INSERT INTO nine_users (email, username, password) VALUES ($1, $2, $3)',[ email, username, encryptedPassword])
-
 
     return res.redirect("/index")
 
