@@ -9,10 +9,7 @@ import JWT from "jsonwebtoken"
 import * as dotenv from 'dotenv';
 dotenv.config()
 import { promisify } from 'util'
-
 const app = express();
-app.set('view engine','ejs')
-app.use(express.urlencoded({ extended: false })); //ogren
 
 //TODO : connection created to posgresql database port 5432
 const client = new Client ({
@@ -28,15 +25,6 @@ const sign = promisify(JWT.sign)
 const verify = promisify(JWT.verify)
 
 app.use(express.json())
-
-//TODO  added interface of the site
-app.get('/register', (req, res) => {
-    res.render('register')
-});
-
-app.get('/lobby', (req, res) => {
-    res.render('lobby')
-});
 
 //!why this is not working?
 app.post('/register', (req, res) => {

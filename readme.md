@@ -5,5 +5,4 @@
 > All information has to be stored in a PostgreSQL database.
 > All the below features have to be implemented in the form of a REST API, this API should only return JSON not HTML!
 
-> ## How does the interface look?
-> ![](img.png)
+
