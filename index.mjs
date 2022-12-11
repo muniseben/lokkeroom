@@ -31,12 +31,6 @@ app.post('/register', (req, res) => {
 
 let { email, username, password } = req.body
 
-console.log({
-    email,
-    username,
-    password
-});
-
 if ( !email || !username || !password)
     return res.status(400).send({ error: 'Invalid request' })
 
