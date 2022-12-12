@@ -1,8 +1,8 @@
-const port = 3000;
-
 //TODO : modules added
 import pkg from "pg"
 const { Client } = pkg;
+
+
 import express from "express";
 import bcrypt from "bcrypt"
 import JWT from "jsonwebtoken"
@@ -15,8 +15,8 @@ const app = express();
 const client = new Client ({
     user: 'postgres',
     password: '5565',
-    database: 'db_eight',
-    host: 'localhost',
+    database: 'mb',
+    host: 'localhost', 
     port: 5432
 })
 await client.connect();
@@ -29,15 +29,15 @@ app.use(express.json())
 //!why this is not working?
 app.post('/register', (req, res) => {
 
-let { email, username, password } = req.body
+let { username, email, password } = req.body
 
-if ( !email || !username || !password)
+if ( !username || !email || !password)
     return res.status(400).send({ error: 'Invalid request' })
 
 try {
     const encryptedPassword = bcrypt.hash(password, 10)
     client.query(
-        'INSERT INTO nine_users (email, username, password) VALUES ($1, $2, $3)',[ email, username, encryptedPassword])
+        'INSERT INTO users (username, email, password) VALUES ($1, $2, $3)',[ email, username, encryptedPassword])
 
     return res.redirect("/index")
 
@@ -46,7 +46,6 @@ try {
     res.status(500).send({ error: 'Internal server error' })
 
 }
-
 
 })
 
@@ -64,5 +63,5 @@ app.get('/users', async (req, res) => {
 
 //TODO connection created to port 3000
 app.listen(3000,() => {
-console.log(`Example app listening at http://localhost:${port}`)
+console.log(`Example app listening`)
 })
